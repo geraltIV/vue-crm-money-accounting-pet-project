@@ -7,7 +7,7 @@
         tag="li"
         active-class="active"
         :to="link.url"
-        :exact="link.exact"
+        exact
       >
         <a href="#" class="waves-effect waves-orange pointer">{{
           link.title
