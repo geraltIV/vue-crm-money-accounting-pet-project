@@ -27,7 +27,7 @@
                 <i class="material-icons">account_circle</i>Профиль
               </router-link>
             </li>
-            <li class="divider" tabindex="-1"></li>
+            <!-- <li class="divider" tabindex="-1"></li> -->
             <li>
               <a href="#" class="black-text" @click.prevent="logout">
                 <i class="material-icons">assignment_return</i>Выйти
@@ -62,8 +62,8 @@ export default {
     });
   },
   methods: {
-    logout() {
-      console.log("log out!");
+    async logout() {
+      await this.$store.dispatch('logout')
       this.$router.push("/login?message=logout");
     },
   },

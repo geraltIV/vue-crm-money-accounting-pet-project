@@ -115,7 +115,7 @@ export default {
     },
   },
   methods: {
-    handleFormSubmit() {
+    async handleFormSubmit() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
@@ -128,9 +128,12 @@ export default {
         agree: this.agree
       };
 
-      console.log(formData);
-
-      this.$router.push("/");
+      try {
+        await this.$store.dispatch('register', formData)
+        this.$router.push("/");
+      } catch (error) {
+        throw `${error}`
+      }
     },
   },
 };
