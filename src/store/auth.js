@@ -17,7 +17,7 @@ export default {
                 const uid = await dispatch('getUid')
 
                 await firebase.database().ref(`/users/${uid}/info`).set({
-                    bill: 1000,
+                    bill: 0,
                     name
                 })
             } catch (error) {
@@ -29,8 +29,9 @@ export default {
             const user = firebase.auth().currentUser;
             return user ? user.uid : null
         },
-        async logout() {
+        async logout({commit}) {
             await firebase.auth().signOut()
+            commit('clearInfo')
         }
     }
 }

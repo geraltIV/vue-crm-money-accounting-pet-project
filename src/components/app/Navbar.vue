@@ -17,7 +17,7 @@
             ref="dropdown"
             exact
           >
-            USER NAME
+            {{ getUserName }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -60,6 +60,11 @@ export default {
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: true,
     });
+  },
+  computed: {
+    getUserName() {
+      return this.$store.getters.info.name 
+    }
   },
   methods: {
     async logout() {
